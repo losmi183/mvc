@@ -1,26 +1,15 @@
 <?php
-// phpinfo();
-// exit;
 
 require_once __DIR__ .'/../vendor/autoload.php'; 
 
-
-
-// echo '<pre>';
-// var_dump(dirname(__DIR__));
-// // var_dump($callback);
-// echo '</pre>';
-// exit;
-
-// TODO: Comment
 use app\controllers\AuthController;
 use app\core\Application;
 use app\controllers\SiteController;
- 
 
+// Create app object
 $app = new Application(dirname(__DIR__));
 
-
+// TODO: Move routes to separate file/class
 $app->router->get('/', [SiteController::class, 'home']);
 $app->router->get('/contact', [SiteController::class, 'contact']);
 $app->router->post('/contact', [SiteController::class, 'handleContact']);
@@ -30,8 +19,5 @@ $app->router->post('/login', [AuthController::class, 'login']);
 $app->router->get('/register', [AuthController::class, 'register']);
 $app->router->post('/register', [AuthController::class, 'register']);
 
-// $app->router->post('/users', function () {
-//     return 'Users';
-// });
-
+// Run app
 $app->run();

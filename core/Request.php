@@ -4,7 +4,11 @@ namespace app\core;
 
 class Request {
 
-    public function getPath()
+    /**
+     * getPath - return request path from REQUEST_URI super global variable
+     * @return string
+     */
+    public function getPath(): string
     {
         $path = $_SERVER["REQUEST_URI"] ?? '/';
         $position = strpos($path, '?');
@@ -15,22 +19,39 @@ class Request {
         return substr($path, 0, $position);
     }
 
-    public function method()
+    /**
+     * method - return request method from REQUEST_METHOD super global variable
+     * @return string
+     */
+    public function method(): string
     {
         $method = strtolower($_SERVER['REQUEST_METHOD']);
         return $method;
     }
-    public function isGet()
+    /**
+     * isGet - check if request method is get
+     * @return bool
+     */
+    public function isGet(): bool
     {
         return $this->method() === 'get';
     }
-    public function isPost()
+
+    /**
+     * isPost - check if request method is post
+     * @return string
+     */
+    public function isPost(): string
     {
         $method = $this->method() == 'post';
         return $method;
     }
 
-    public function getBody()
+    /**
+     * getBody - sanitize request inputs and return them as array
+     * @return array
+     */
+    public function getBody(): array
     {
         $body = [];
         if($this->method() == 'get') {
