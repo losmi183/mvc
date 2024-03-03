@@ -9,6 +9,9 @@
   <button type="submit" class="btn btn-primary">Submit</button>
 <?php echo \app\core\form\Form::end(); ?>
 
+
+
+
 <!-- <form action="" method="post">
   <div class="mb-3">
     <label>First name</label>
